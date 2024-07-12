@@ -10,6 +10,8 @@ declare global {
         userStatistics: UserStatisticsModelType;
         post: PostModelType;
     },
+
+    var databaseConnected: boolean;
 }
 
 export default global
