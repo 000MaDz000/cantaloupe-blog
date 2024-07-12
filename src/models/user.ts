@@ -33,8 +33,11 @@ else {
         }
     });
 
+    userModelSchema.index({ email: 1, });
+    userModelSchema.index({ role: 1 });
+
     UserModel = model("User", userModelSchema);
-    global.models.user = UserModel;
+    global.models.user = UserModel as UserModelType;
 }
 
 export default UserModel as UserModelType;

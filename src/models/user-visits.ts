@@ -37,8 +37,9 @@ else {
         }
     });
 
+    userVisitsSchema.index({ userId: 1, date: -1, postClassification: 1, postId: 1 })
     UserVisitsModel = model("UserVisits", userVisitsSchema);
-    global.models.userVisits = UserVisitsModel;
+    global.models.userVisits = UserVisitsModel as UserVisitsModelType;
 }
 
 export default UserVisitsModel as UserVisitsModelType;
