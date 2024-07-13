@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
-import { jwtDecode } from "jwt-decode";
 import UserHandler from "../../../_classes/user";
+import axios from "axios";
 
 export type ResponseData = {
     name: string;
@@ -11,17 +11,27 @@ export type ResponseData = {
 }
 
 export async function POST(req: Request) {
-    const body: { credential: string } = await req.json();
-    const data = jwtDecode<ResponseData>(body.credential);
+    const body: { access_token: string } = await req.json();
+    const googleRes = await axios.get("https://www.googleapis.com/oauth2/v3/userinfo", {
+        headers: {
+            Authorization: `Bearer ${body.access_token}`
+        }
+    });
 
+    const data: ResponseData = googleRes.data;
     const handler = new UserHandler(data);
     const success = await handler.insertIfNotFound();
     await handler.saveSession();
+
+
 
     const res = new NextResponse("", {
         status: success ? 200 : 500,
     });
 
+    if (data.email === process.env.ADMIN_EMAIL) {
+        res.headers.set("x-redirect", "/dashboard");
+    }
 
     return res;
 }

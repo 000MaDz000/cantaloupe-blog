@@ -1,5 +1,11 @@
 {
     "Index": {
-        "x": "hi"
+        "login": "Login To Your Account",
+        "errors": {
+            "login fails": "Sorry, there is unknown error"
+        },
+        "header": {
+            "search placeholder": "Search Here"
+        }
     }
 }
