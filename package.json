@@ -12,7 +12,6 @@
     "@react-oauth/google": "^0.12.1",
     "axios": "^1.7.2",
     "cryptr": "^6.3.0",
-    "iron-session": "^8.0.2",
     "jwt-decode": "^4.0.0",
     "mongoose": "^8.5.0",
     "next": "14.2.4",
