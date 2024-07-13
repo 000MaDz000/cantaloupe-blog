@@ -4,6 +4,7 @@ import PostModel, { PostModelType } from "./post";
 import UserModel, { UserModelType } from "./user";
 import UserStatisticsModel, { UserStatisticsModelType } from "./user-statistics";
 import UserVisitsModel, { UserVisitsModelType } from "./user-visits";
+import StatisticsModel, { StatisticsModelType } from "./statistics";
 
 
 
@@ -11,6 +12,7 @@ export const User = UserModel as UserModelType;
 export const UserVisits = UserVisitsModel as UserVisitsModelType;
 export const UserStatistics = UserStatisticsModel as UserStatisticsModelType;
 export const Post = PostModel as PostModelType;
+export const Statistics = StatisticsModel as StatisticsModelType;
 
 
 if (!global.databaseConnected) {

@@ -12,7 +12,7 @@ export default function DashboardSideBar({ logo }: { logo: ReactNode }) {
     const path = usePathname();
 
     return (
-        <div className="flex-2 bg-gray-700 text-white dark:bg-zinc-900 px-4 py-3 min-w-24 flex flex-col gap-10">
+        <div className="flex-2 bg-gray-700 text-white dark:bg-zinc-900 px-4 py-3 min-w-40 hidden md:flex flex-col gap-10">
             {logo}
             <div className="flex flex-col gap-4 font-open_sans text-lg text-gray-200 font-[300] [&>*]:flex [&>*]:justify-between">
                 <Link href="/dashboard" className={"/dashboard" === path ? "bg-slate-600 dark:bg-slate-700 px-2" : "px-2"}>
