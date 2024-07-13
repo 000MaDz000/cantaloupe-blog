@@ -2,6 +2,7 @@ import { PostModelType } from "@/models/post";
 import { UserModelType } from "@/models/user";
 import { UserStatisticsModelType } from "@/models/user-statistics";
 import { UserVisitsModelType } from "@/models/user-visits";
+import { ResponseData } from "@/app/api/auth/google/route";
 
 declare global {
     var models: {
@@ -16,3 +17,6 @@ declare global {
 
 export default global
 
+export interface SessionData {
+    user: ResponseData
+} 
