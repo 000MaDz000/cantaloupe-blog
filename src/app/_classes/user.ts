@@ -7,7 +7,7 @@ export default class UserHandler {
 
     async insertIfNotFound() {
         try {
-            const user = await User.find({ email: this.data.email });
+            const user = await User.findOne({ email: this.data.email });
 
             if (user) return true;
 
