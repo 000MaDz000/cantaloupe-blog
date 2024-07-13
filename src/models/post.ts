@@ -9,6 +9,7 @@ export type IPostSection = {
 export interface IPost {
     classification: string;
     sections: IPostSection[],
+    draft?: boolean;
 }
 
 export type PostModelType = Model<IPost>
@@ -22,6 +23,13 @@ if (global.models.post) {
 else {
     console.log("creating post model..");
     PostSchema = new Schema<IPost>({
+        classification: {
+            type: String,
+            required: true,
+        },
+        draft: {
+            default: false,
+        },
         sections: {
             type: [{
                 media: String,
