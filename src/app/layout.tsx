@@ -1,14 +1,20 @@
 import { NextIntlClientProvider } from "next-intl";
 import "./globals.css";
-import { getMessages } from "next-intl/server";
+import { getLocale, getMessages } from "next-intl/server";
 if (!global.models) {
     global.models = {} as any;
 }
 
 export default async function RootLayout({ children }: any) {
+    const locale = await getLocale();
+
     return (
         <html lang="en">
-            <body>
+            <head>
+                <link rel="preconnect" href="https://fonts.googleapis.com" />
+            </head>
+
+            <body dir={locale === "ar" ? "rtl" : "ltr"}>
                 <NextIntlClientProvider messages={await getMessages()}>
                     {children}
                 </NextIntlClientProvider>

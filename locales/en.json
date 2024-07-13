@@ -7,5 +7,21 @@
         "header": {
             "search placeholder": "Search Here"
         }
+    },
+    "Dashboard": {
+        "links": {
+            "home": "Home",
+            "posts": "Posts",
+            "users": "Users"
+        },
+        "tables": {
+            "posts": {
+                "table title": "Posts",
+                "classification": "Classification",
+                "title": "Classification",
+                "sections count": "sections",
+                "no data": "There Is Not Posts !"
+            }
+        }
     }
 }

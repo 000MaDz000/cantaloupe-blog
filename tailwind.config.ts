@@ -14,6 +14,9 @@ const config: Config = {
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
     },
+    fontFamily: {
+      "open_sans": ["Open Sans", "sans-serif"]
+    },
   },
   plugins: [],
   darkMode: "selector"
