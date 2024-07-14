@@ -1,12 +1,14 @@
 import DashboardPostsPaper from "@/app/_components/dashboard-posts-paper";
-import { Container } from "@mui/material";
+import { Box, Container } from "@mui/material";
 
 export default function PostsPage() {
     return (
         <div className="mt-7">
             <Container>
-                <DashboardPostsPaper />
-                <DashboardPostsPaper draft />
+                <Box className="flex flex-col gap-4">
+                    <DashboardPostsPaper />
+                    <DashboardPostsPaper draft />
+                </Box>
             </Container>
         </div>
     )

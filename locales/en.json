@@ -52,8 +52,12 @@
                 "section title placeholder": "Section Title",
                 "section body placeholder": "Section Body (optional)",
                 "save section": "Save Post Section",
+                "save post": "Save Post",
+                "add section": "Add A New Section",
+                "post classification": "Post Classification",
                 "errors": {
-                    "title required": "the post title is required"
+                    "title required": "the post title is required",
+                    "classification required": "The Classification Is Required"
                 }
             }
         }

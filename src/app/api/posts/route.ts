@@ -1,3 +1,4 @@
+import isAdmin from "@/functions/is-admin";
 import session from "@/functions/session";
 import { Post } from "@/models";
 import { IPost, IPostSection } from "@/models/post";
@@ -35,8 +36,7 @@ export async function GET(req: NextRequest, ctx: any) {
 }
 
 export async function POST(req: Request) {
-    const sess = await session();
-    if (!sess.data.user) new NextResponse("", { status: 401 });
+    if (!await isAdmin()) new NextResponse("", { status: 403 });
 
     const data: IPost = await req.json();
 

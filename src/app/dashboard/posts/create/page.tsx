@@ -1,48 +1,90 @@
 'use client';
 import CreateSection from "@/app/_components/dashboard-create-section";
 import PostSection from "@/app/_components/post-section";
-import { IPostSection } from "@/models/post";
-import { AddCircle } from "@mui/icons-material";
-import { Box, IconButton, Typography } from "@mui/material";
+import { IPost, IPostSection } from "@/models/post";
+import { AddCircle, Save } from "@mui/icons-material";
+import { Box, Button, TextField, Typography } from "@mui/material";
+import axios from "axios";
 import { useTranslations } from "next-intl";
 import { useState } from "react";
 
 export default function CreatePostPage() {
     const t = useTranslations("Dashboard.creations.post");
     const [sections, setSections] = useState<IPostSection[]>([]);
-    const [EmptySections, setEmptySections] = useState(1);
-    const [lastOneSaved, setLastOneSaved] = useState(false);
+    const [EmptySection, setEmptySection] = useState(true);
+    const [emptySectionData, setEmptySectionData] = useState<IPostSection>({ title: "", body: "", media: "" });
+    const [classification, setClassification] = useState("");
+    const [classificationErr, setClassificationErr] = useState("");
+    let canSave = false;
 
     const addNewSection = () => {
-        setEmptySections(EmptySections + 1);
+        setEmptySection(true);
     }
 
     const onSaveSection = (title: string, body: string) => {
         setSections([...sections, { title, body, media: "" }]);
-        setLastOneSaved(true);
-        setEmptySections(EmptySections - 1);
+        setEmptySection(false);
+        setEmptySectionData({ title: "", body: "", media: "" });
     }
+
+    const onEditSavedSection = (val: IPostSection) => {
+        setEmptySection(true);
+        setEmptySectionData(val);
+        setSections(sections.filter(sec => sec.body !== val.body || sec.title !== val.title));
+    }
+
+    const savePost = async () => {
+        if (!classification) return setClassificationErr("errors.classification required");
+
+        const data: IPost = {
+            classification,
+            sections,
+        }
+
+        const response = await axios.post("/api/posts", data);
+        console.log(response);
+    }
+
+    const onChangeClassification = (classification: string) => {
+        if (classificationErr) setClassificationErr("");
+        setClassification(classification);
+    }
+
+    if (sections.length) canSave = true;
+    else canSave = false;
 
     return (
         <div className="m-7 dark:text-gray-300 flex flex-col gap-28">
             <Typography variant="h4">{t("page title")}</Typography>
-            <Box className="flex flex-col gap-8 border-2 p-5">
-                {
-                    sections.map(section => (
-                        <PostSection data={section} key={section.body} />
-                    ))
-                }
+
+            <Box>
+                {classificationErr && <Typography color="red" mb={1}>{t(classificationErr)}</Typography>}
+                <TextField fullWidth name="post-classification" label={t("post classification")} onChange={(e) => onChangeClassification(e.target.value)} />
             </Box>
+
+            {sections.length ? (
+                <Box className="flex flex-col gap-8 border-2 p-5">
+                    {
+                        sections.map(section => (
+                            <PostSection data={section} key={section.body + section.title} onClickEdit={() => onEditSavedSection(section)} />
+                        ))
+                    }
+                </Box>
+            ) : undefined}
+
             {
-                [...new Array(EmptySections)].map((i) => (
-                    <CreateSection onSave={onSaveSection} />
-                ))
+                EmptySection && <CreateSection onSave={onSaveSection} defaultData={emptySectionData} />
             }
 
-            <Box className="[&_*]:dark:text-gray-300">
-                <IconButton onClick={() => addNewSection()} disabled={!lastOneSaved} >
-                    <AddCircle />
-                </IconButton>
+            <Box className="[&_*]:dark:text-gray-300 flex justify-between">
+                <Button className="flex items-center gap-4" endIcon={<AddCircle />} variant="contained" color="success" onClick={() => addNewSection()} disabled={EmptySection}>
+                    <Typography>{t("add section")}</Typography>
+                </Button>
+
+
+                <Button className="flex items-center gap-4" endIcon={<Save />} variant="contained" color="secondary" disabled={!canSave} onClick={savePost}>
+                    <Typography>{t("save post")}</Typography>
+                </Button>
             </Box>
         </div>
     )

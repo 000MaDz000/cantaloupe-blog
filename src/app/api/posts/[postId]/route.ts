@@ -6,7 +6,7 @@ import { IPost, IPostSection } from "@/models/post";
 import { NextResponse } from "next/server";
 
 export async function PUT(req: Request, { params }: { params: { postId: string } }) {
-    if (!isAdmin()) return new NextResponse("", { status: 403 });
+    if (!await isAdmin()) return new NextResponse("", { status: 403 });
     if (!ValidateId(params.postId)) return new NextResponse("", { status: 404 });
 
     const sess = await session();

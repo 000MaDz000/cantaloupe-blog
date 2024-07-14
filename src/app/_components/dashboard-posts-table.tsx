@@ -32,7 +32,7 @@ export default function DashboardPostsTable({ draft }: { draft?: boolean }) {
 
                 <TableBody>
                     {posts.map(v => (
-                        <DashboardPostsTableRow post={v} />
+                        <DashboardPostsTableRow post={v} key={v._id as string} />
                     ))}
                 </TableBody>
 
