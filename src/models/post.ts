@@ -28,6 +28,7 @@ else {
             required: true,
         },
         draft: {
+            type: Boolean,
             default: false,
         },
         sections: {

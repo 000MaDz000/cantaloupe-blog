@@ -17,10 +17,12 @@
         "tables": {
             "posts": {
                 "table title": "Posts",
+                "draft posts title": "Draft Posts",
                 "classification": "Classification",
                 "title": "Title",
                 "sections count": "sections",
-                "no data": "There Is Not Posts !"
+                "no data": "There Is Not Posts !",
+                "no draft data": "There Is No Draft Posts"
             }
         },
         "charts": {
@@ -42,6 +44,18 @@
             "10": "October",
             "11": "November",
             "12": "December"
+        },
+        "creations": {
+            "post": {
+                "page title": "Create A New Post",
+                "create section title": "Create A New Section",
+                "section title placeholder": "Section Title",
+                "section body placeholder": "Section Body (optional)",
+                "save section": "Save Post Section",
+                "errors": {
+                    "title required": "the post title is required"
+                }
+            }
         }
     }
 }

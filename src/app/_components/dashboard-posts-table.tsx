@@ -6,7 +6,7 @@ import { useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
 import DashboardPostsTableRow from "./dashboard-posts-table-row";
 
-export default function DashboardPostsTable() {
+export default function DashboardPostsTable({ draft }: { draft?: boolean }) {
     const t = useTranslations("Dashboard.tables.posts");
     const [posts, setPosts] = useState<(IPost & { _id: string })[]>([]);
     const [pending, setPending] = useState(false);
@@ -14,14 +14,14 @@ export default function DashboardPostsTable() {
     useEffect(() => {
         const lastId = posts.length ? posts[posts.length - 1]._id : "";
         (async () => {
-            const res = await axios.get("/api/posts?lastId=" + lastId);
+            const res = await axios.get("/api/posts?lastId=" + lastId + (draft ? "&draft=true" : ""));
             setPosts([...posts, ...res.data]);
         })();
     }, []);
 
     return (
         <>
-            <Table>
+            <Table className="border dark:border-zinc-900">
                 <TableHead>
                     <TableRow>
                         <TableCell className="dark:text-white">{t("classification")}</TableCell>
@@ -39,7 +39,7 @@ export default function DashboardPostsTable() {
             </Table>
             {
                 (!posts.length && !pending) && (
-                    <Typography textAlign={"center"} margin={2} fontWeight={"semi-bold"} >{t("no data")}</Typography>
+                    <Typography textAlign={"center"} margin={2} fontWeight={"semi-bold"} >{draft ? t("no draft data") : t("no data")}</Typography>
                 )
             }
 
