@@ -10,7 +10,7 @@ export default function PostSection({ data, onClickEdit }: { data: IPostSection,
                 {data.title}
                 {onClickEdit && (
                     <span>
-                        <IconButton onClick={onClickEdit}>
+                        <IconButton onClick={onClickEdit} className="dark:text-gray-400 dark:bg-zinc-700 dark:hover:bg-zinc-600 mx-3">
                             <Edit />
                         </IconButton>
                     </span>

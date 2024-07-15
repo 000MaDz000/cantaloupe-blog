@@ -57,9 +57,11 @@ export default function CreatePostPage() {
         <div className="m-7 dark:text-gray-300 flex flex-col gap-28">
             <Typography variant="h4">{t("page title")}</Typography>
 
-            <Box>
-                {classificationErr && <Typography color="red" mb={1}>{t(classificationErr)}</Typography>}
-                <TextField fullWidth name="post-classification" label={t("post classification")} onChange={(e) => onChangeClassification(e.target.value)} />
+            <Box className="">
+                {classificationErr && <Typography color="red" className="text-red-700" mb={1}>{t(classificationErr)}</Typography>}
+                <Box className="dark:[&_*]:text-white dark:[&_*]:boder dark:[&_*]:border-sky-600">
+                    <TextField fullWidth name="post-classification" label={t("post classification")} onChange={(e) => onChangeClassification(e.target.value)} />
+                </Box>
             </Box>
 
             {sections.length ? (
