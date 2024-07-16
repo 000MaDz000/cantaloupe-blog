@@ -60,6 +60,13 @@
                     "classification required": "The Classification Is Required"
                 }
             }
+        },
+        "users": {
+            "name": "Name",
+            "email": "Email",
+            "role": "Role",
+            "admin": "Admin",
+            "user": "User"
         }
     }
 }
