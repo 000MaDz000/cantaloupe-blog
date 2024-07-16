@@ -1,7 +1,7 @@
 import isAdmin from "@/functions/is-admin";
 import session from "@/functions/session";
 import ValidateId from "@/functions/validate-id";
-import { Post } from "@/models";
+import { Post } from "@/models/index";
 import { IPost, IPostSection } from "@/models/post";
 import { NextResponse } from "next/server";
 

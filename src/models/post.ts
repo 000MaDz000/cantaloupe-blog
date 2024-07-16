@@ -1,5 +1,5 @@
 import { model, Model, Schema } from "mongoose";
-
+if (!global.models) global.models = {} as any;
 export type IPostSection = {
     media: string;
     title: string;

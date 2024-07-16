@@ -1,4 +1,5 @@
 import { Model, model, Schema } from "mongoose";
+if (!global.models) global.models = {} as any;
 
 export enum IStatisticsName {
     totalPosts = "totalPosts", // total posts created from the site creation

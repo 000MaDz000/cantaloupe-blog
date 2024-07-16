@@ -1,4 +1,5 @@
 import { Model, model, Schema } from "mongoose";
+if (!global.models) global.models = {} as any;
 
 export interface IUserStatistics {
     userId: Schema.Types.ObjectId;

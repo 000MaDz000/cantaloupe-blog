@@ -27,7 +27,7 @@
         },
         "charts": {
             "visits": {
-                "title": "Visits In {month}",
+                "title": "Visits In {in}",
                 "summary": "Summary"
             }
         },

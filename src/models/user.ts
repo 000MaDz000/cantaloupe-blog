@@ -1,4 +1,5 @@
 import { Model, Schema, model } from "mongoose";
+if (!global.models) global.models = {} as any;
 
 export type UserRole = "admin" | "user";
 
