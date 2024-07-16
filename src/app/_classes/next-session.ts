@@ -15,7 +15,6 @@ export default class NextSession<T> {
 
         const val = cookie.get("SESSION");
         if (val?.value) {
-            console.log(val);
             try {
                 this.data = JSON.parse(crypt.decrypt(val.value));
             }

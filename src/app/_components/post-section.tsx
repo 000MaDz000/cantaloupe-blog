@@ -2,11 +2,11 @@ import { IPostSection } from "@/models/post";
 import { Edit } from "@mui/icons-material";
 import { IconButton, Typography } from "@mui/material";
 
-export default function PostSection({ data, onClickEdit }: { data: IPostSection, onClickEdit?: () => void }) {
+export default function PostSection({ data, onClickEdit, demo }: { data: IPostSection, onClickEdit?: () => void, demo?: boolean }) {
 
     return (
         <div>
-            <Typography variant="h4">
+            <Typography variant={demo ? "body1" : "h4"}>
                 {data.title}
                 {onClickEdit && (
                     <span>
@@ -16,7 +16,7 @@ export default function PostSection({ data, onClickEdit }: { data: IPostSection,
                     </span>
                 )}
             </Typography>
-            <Typography variant="body1" mx={3} my={3}>{data.body}</Typography>
+            <Typography variant="body1" mx={demo ? 0 : 3} my={demo ? 1 : 3} className={demo ? "line-clamp-2" : undefined}>{data.body}</Typography>
         </div>
     )
 }

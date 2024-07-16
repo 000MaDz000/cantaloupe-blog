@@ -13,10 +13,5 @@ export default async function visitsCounter() {
         await Statistics.updateOne({ name: IStatisticsName.monthSiteVisits, date: { year, month } }, { $inc: { count: 1 } }, { upsert: true });
         await Statistics.updateOne({ name: IStatisticsName.siteVisits }, { $inc: { count: 1 } }, { upsert: true });
         cookie.set(cookieName, "");
-        console.log("visit is created");
-    }
-    else {
-        console.log("visit is already exists");
-
     }
 }
