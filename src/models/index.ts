@@ -1,4 +1,4 @@
-
+if (!global.models) global.models = {} as any;
 import mongoose from "mongoose";
 import PostModel, { PostModelType } from "./post";
 import UserModel, { UserModelType } from "./user";

@@ -6,7 +6,8 @@ export enum IStatisticsName {
     draftPosts = "draftPosts", // total draft posts created in site in month
     totalUsers = "totalUsers", // total users joined from the site creation
     adminUsers = "AdminUsers", // total users that has admin role
-    siteVisits = "siteVisits", // total site visits in some month
+    siteVisits = "siteVisits", // total site visits in some month,
+    monthSiteVisits = "monthSiteVisits",
 };
 
 export interface IStatistics {
