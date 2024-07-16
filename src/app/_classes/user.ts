@@ -1,6 +1,7 @@
 import { ResponseData } from "../api/auth/google/route";
-import { User } from "../../models";
+import { User, UserVisits } from "../../models";
 import session from "../../functions/session";
+import { IPost } from "@/models/post";
 
 export default class UserHandler {
     constructor(public data: ResponseData) { }
@@ -39,6 +40,20 @@ export default class UserHandler {
         }
     }
 
+    async visit(post: IPost) {
+        const user = await User.findOne({ email: this.data.email });
+        if (!user) return;
+
+        await UserVisits.updateOne(
+            {
+                "postId": post,
+                postClassification: post.classification,
+                userId: user._id,
+            },
+            { $inc: { "count": 1 } },
+            { upsert: true });
+    }
+
     static async getUser() {
         try {
             const sess = await session();
@@ -53,4 +68,5 @@ export default class UserHandler {
             return null;
         }
     }
+
 }

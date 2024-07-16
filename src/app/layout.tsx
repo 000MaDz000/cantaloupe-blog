@@ -15,7 +15,7 @@ export default async function RootLayout({ children }: any) {
             <head>
                 <link rel="preconnect" href="https://fonts.googleapis.com" />
                 <Script>
-                    {`fetch("/api/visits",{method:"POST"}).catch(console.error).then(console.log)`}
+                    {`fetch("/api/visits",{method:"POST"}).catch(console.error)`}
                 </Script>
             </head>
 

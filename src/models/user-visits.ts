@@ -5,6 +5,7 @@ export interface IUserVisits {
     postId: Schema.Types.ObjectId;
     postClassification: string;
     date: Date;
+    count: number;
 }
 
 export type UserVisitsModelType = Model<IUserVisits>;
@@ -34,6 +35,10 @@ else {
         date: {
             type: Date,
             default: Date.now
+        },
+        count: {
+            type: Number,
+            default: 1
         }
     });
 

@@ -2,10 +2,10 @@ import { IPostSection } from "@/models/post";
 import { Edit } from "@mui/icons-material";
 import { IconButton, Typography } from "@mui/material";
 
-export default function PostSection({ data, onClickEdit, demo }: { data: IPostSection, onClickEdit?: () => void, demo?: boolean }) {
+export default function PostSection({ data, onClickEdit, onClick, demo }: { data: IPostSection, onClickEdit?: () => void, demo?: boolean, onClick?: () => void }) {
 
     return (
-        <div>
+        <div onClick={onClick} className={"dark:text-white " + (onClick ? "cursor-pointer" : "")}>
             <Typography variant={demo ? "body1" : "h4"}>
                 {data.title}
                 {onClickEdit && (
