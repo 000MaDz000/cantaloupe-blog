@@ -1,11 +1,30 @@
+'use client';
 import { IPost } from "@/models/post";
-import { Grid } from "@mui/material";
+import { useScrollTrigger } from "@mui/material";
 import PostBox from "./post-box";
+import { useEffect, useMemo, useState } from "react";
+import axios from "axios";
 
-export default function PostsBoxesGrid({ posts }: { posts: IPost[] }) {
+export default function PostsBoxesGrid(props: { posts: IPost[] }) {
+    const [posts, setPosts] = useState(props.posts);
+    const lastId = useMemo(() => (posts[posts.length - 1] as any)._id, [posts]);
+    const pending = useScrollTrigger();
+
+    useEffect(() => {
+        if (pending) {
+            axios.get("/api/posts?lastId=" + lastId).then(({ data }) => {
+                if (data && Array.isArray(data)) {
+                    setPosts([...posts, ...data]);
+                }
+                console.log(data);
+
+            });
+        }
+    }, [pending]);
+
     return (
-        <Grid className="grid gap-3 grid-cols-[repeat(auto-fit,minmax(20rem,1fr))]">
-            {posts.map(post => <PostBox post={post} key={post.sections[0].body} />)}
-        </Grid>
+        <div className="flex flex-col gap-3">
+            {posts.map((post, i) => <PostBox post={post} key={post.sections[0].body + post.sections[0].title + i} />)}
+        </div>
     )
 }

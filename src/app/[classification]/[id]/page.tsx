@@ -5,6 +5,8 @@ import { UserVisitsCounter } from "@/functions/visits";
 import { Post } from "@/models";
 import { Container } from "@mui/material";
 import { notFound } from "next/navigation";
+import ContactsBox from "@/app/_components/contacts-box";
+import Footer from "@/app/_components/footer";
 
 export default async function PostPage({ params }: { params: { classification: string, id: string } }) {
 
@@ -20,12 +22,15 @@ export default async function PostPage({ params }: { params: { classification: s
 
     return (
         <PageBox withHeader>
-            <Container className="mt-7">
+            <ContactsBox />
+            <Container className="mt-7 flex flex-col gap-24" maxWidth="md">
 
                 {data && data.sections.map(sectionData => (
                     <PostSection key={sectionData.body} data={sectionData} />
                 ))}
             </Container>
+
+            <Footer></Footer>
         </PageBox>
     )
 }

@@ -1,9 +1,9 @@
 'use client';
 import CreateSection from "@/app/_components/dashboard-create-section";
 import PostSection from "@/app/_components/post-section";
-import { IPost, IPostSection } from "@/models/post";
+import { IPostSection } from "@/models/post";
 import { AddCircle, Save } from "@mui/icons-material";
-import { Box, Button, TextField, Typography } from "@mui/material";
+import { Alert, Box, Button, Snackbar, TextField, Typography } from "@mui/material";
 import axios from "axios";
 import { useTranslations } from "next-intl";
 import { useState } from "react";
@@ -15,16 +15,20 @@ export default function CreatePostPage() {
     const [emptySectionData, setEmptySectionData] = useState<IPostSection>({ title: "", body: "", media: "" });
     const [classification, setClassification] = useState("");
     const [classificationErr, setClassificationErr] = useState("");
+    const [snack, setSnack] = useState(false);
     let canSave = false;
 
     const addNewSection = () => {
         setEmptySection(true);
     }
 
-    const onSaveSection = (title: string, body: string) => {
-        setSections([...sections, { title, body, media: "" }]);
+    const onSaveSection = (title: string, body: string, mediaURL?: string) => {
+        setSections([
+            ...sections,
+            { title, body, media: mediaURL as string }
+        ]);
         setEmptySection(false);
-        setEmptySectionData({ title: "", body: "", media: "" });
+        setEmptySectionData({ title: "", body: "", media: mediaURL || "", });
     }
 
     const onEditSavedSection = (val: IPostSection) => {
@@ -35,14 +39,20 @@ export default function CreatePostPage() {
 
     const savePost = async () => {
         if (!classification) return setClassificationErr("errors.classification required");
-
-        const data: IPost = {
+        const data: any = {
             classification,
-            sections,
+            sections
         }
 
         const response = await axios.post("/api/posts", data);
-        console.log(response);
+        if (response.status === 201) {
+            setSnack(true);
+            setSections([]);
+            setEmptySectionData({ body: "", title: "", media: "" });
+            setClassification("");
+            setClassificationErr("");
+            setEmptySection(true);
+        }
     }
 
     const onChangeClassification = (classification: string) => {
@@ -88,6 +98,14 @@ export default function CreatePostPage() {
                     <Typography>{t("save post")}</Typography>
                 </Button>
             </Box>
+
+            {snack && (
+                <Snackbar color={"green"} open autoHideDuration={5000} onClose={() => setSnack(false)}>
+                    <Alert color="success">
+                        {t("created")}
+                    </Alert>
+                </Snackbar>
+            )}
         </div>
     )
 }

@@ -39,7 +39,7 @@ export async function GET(req: NextRequest, ctx: any) {
 export async function POST(req: Request) {
     if (!await isAdmin()) new NextResponse("", { status: 403 });
 
-    const data: IPost = await req.json();
+    const data = await req.json();
 
     if (!data.classification) return new NextResponse("", { status: 400 })
     if (!data.sections || !data.sections.length) return new NextResponse("", { status: 400 });
@@ -80,5 +80,5 @@ export async function POST(req: Request) {
         return new NextResponse("", { status: 400 });
     }
 
-    return new NextResponse("", { status: 200 });
+    return new NextResponse("", { status: 201 });
 }

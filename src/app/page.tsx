@@ -13,7 +13,7 @@ export default async function Home() {
 
   return (
     <PageBox withHeader>
-      <Container>
+      <Container maxWidth="sm">
         <PostsBoxesGrid posts={posts} />
       </Container>
 

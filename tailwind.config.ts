@@ -15,7 +15,9 @@ const config: Config = {
       },
     },
     fontFamily: {
-      "open_sans": ["Open Sans", "sans-serif"]
+      "open_sans": ["Open Sans", "sans-serif"],
+      "upload": ["Edu", "AU", "VIC", "WA", "NT", "Hand", "cursive"],
+      "contact": ["Roboto", "sans-serif"]
     },
   },
   plugins: [],
