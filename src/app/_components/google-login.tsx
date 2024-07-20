@@ -6,9 +6,9 @@ import { GoogleLogin, useGoogleLogin } from "@react-oauth/google";
 import axios from "axios";
 import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { ReactNode, useState } from "react";
 
-export default function GoogleLoginButton() {
+export default function GoogleLoginButton({ children, disabled }: { children?: ReactNode, disabled?: boolean }) {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [err, setErr] = useState("");
     const t = useTranslations("Index");
@@ -47,23 +47,29 @@ export default function GoogleLoginButton() {
 
     return (
         !isLoggedIn && (
-            <Box>
-                <GoogleLogin onSuccess={onSuccess} containerProps={{ className: "hidden" }} />
+            children ? (
+                <Box onClick={() => disabled ? undefined : login()}>
+                    {children}
+                </Box>
+            ) : (
+                <Box>
+                    <GoogleLogin onSuccess={onSuccess} containerProps={{ className: "hidden" }} />
 
-                <Tooltip title={t("login")}>
-                    <IconButton onClick={() => login()} size="large">
-                        <Login />
-                    </IconButton>
-                </Tooltip>
+                    <Tooltip title={t("login")}>
+                        <IconButton onClick={() => login()} size="large">
+                            <Login />
+                        </IconButton>
+                    </Tooltip>
 
-                {
-                    err && (
-                        <Dialog open onClose={() => setErr("")} PaperProps={{ className: "w-screen mx-4 sm:w-[75vw] md:w-[50vw]" }}>
-                            <DialogTitle color={"error"} textAlign={"center"}>{t(err)}</DialogTitle>
-                        </Dialog>
-                    )
-                }
-            </Box>
+                    {
+                        err && (
+                            <Dialog open onClose={() => setErr("")} PaperProps={{ className: "w-screen mx-4 sm:w-[75vw] md:w-[50vw]" }}>
+                                <DialogTitle color={"error"} textAlign={"center"}>{t(err)}</DialogTitle>
+                            </Dialog>
+                        )
+                    }
+                </Box>
+            )
         )
     )
 }

@@ -1,10 +1,10 @@
 import ThemeSwitcher from "./theme-switcher";
 import GoogleLoginButton from "./google-login";
-import { GoogleOAuthProvider } from "@react-oauth/google";
-import { Box, Typography } from "@mui/material";
+import { Box } from "@mui/material";
 import session from "@/functions/session";
 import SearchBar from "./search-bar";
 import AppLogo from "./app-logo";
+import OAuthProvider from "./google-oauth-provider";
 
 export default async function Header() {
     const sess = await session();
@@ -21,9 +21,9 @@ export default async function Header() {
                     sess.data.user ? (
                         <></>
                     ) : (
-                        <GoogleOAuthProvider clientId={process.env.GOOGLE_CLIENT_ID as string}>
+                        <OAuthProvider>
                             <GoogleLoginButton />
-                        </GoogleOAuthProvider>
+                        </OAuthProvider>
                     )
                 }
 

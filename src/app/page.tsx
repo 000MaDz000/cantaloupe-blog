@@ -1,6 +1,6 @@
 import { getTranslations } from "next-intl/server";
 import "../models"
-import { Container } from "@mui/material";
+import { Container, Typography } from "@mui/material";
 import { IPost } from "@/models/post";
 import PostsBoxesGrid from "./_components/posts-boxes-grid";
 import PageBox from "./_components/page-box";
@@ -12,9 +12,14 @@ export default async function Home() {
   const posts = await res.json() as IPost[];
 
   return (
-    <PageBox withHeader>
+    <PageBox withHeader withFooter>
       <Container maxWidth="sm">
-        <PostsBoxesGrid posts={posts} />
+        {posts && posts.length ? (
+          <PostsBoxesGrid posts={posts} />
+
+        ) : (
+          <Typography variant="h5" textAlign={"center"} m={3}>{t("no posts")}</Typography>
+        )}
       </Container>
 
     </PageBox>

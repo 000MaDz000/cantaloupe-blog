@@ -16,7 +16,7 @@ export default function PostBox({ post }: { post: IPost }) {
     }, [post]);
 
     return (
-        <Box className="p-7 bg-gray-300 dark:bg-gray-800 dark:text-gray-300 rounded-sm flex flex-col gap-5">
+        <Box className="p-7 bg-gray-300 dark:bg-gray-800 dark:text-gray-300 rounded-sm flex flex-col gap-5 cursor-pointer">
             <Typography variant="h6">{post.classification}</Typography>
             <PostSection demo data={section} onClick={() => renderPostPage()} />
         </Box>

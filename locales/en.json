@@ -1,5 +1,12 @@
 {
     "app logo": "Cantaloupe",
+    "get notifications": "Notify you with new posts",
+    "login now": "Login Now",
+    "Terms": {
+        "privacy": "Privacy Policy",
+        "use": "Use Conditions",
+        "copyright": "Copyright"
+    },
     "Index": {
         "login": "Login To Your Account",
         "errors": {
@@ -7,7 +14,8 @@
         },
         "header": {
             "search placeholder": "Search Here"
-        }
+        },
+        "no posts": "There is Not Posts !"
     },
     "contacts": {
         "follow": "Follow {appname}"
