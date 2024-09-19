@@ -5,10 +5,12 @@ import IconButton from "@mui/material/IconButton";
 import Snackbar from "@mui/material/Snackbar";
 import axios from "axios";
 import { useTranslations } from "next-intl";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 export default function DeletePostButton({ postId }: { postId: string }) {
     const [snack, setSnack] = useState("");
+    const router = useRouter();
     const duration = 5000;
     const t = useTranslations("Dashboard");
 
@@ -16,7 +18,7 @@ export default function DeletePostButton({ postId }: { postId: string }) {
         try {
             setSnack("creations.post.post deleted");
             await axios.delete("/api/posts/" + postId);
-            history.back();
+            router.back();
         }
         catch (err) {
             setSnack("creations.post.post deleted err");

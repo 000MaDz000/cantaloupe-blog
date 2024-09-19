@@ -23,7 +23,7 @@ export default function PostsBoxesGrid(props: { posts: IPost[] }) {
     }, [pending]);
 
     return (
-        <div className="flex flex-col gap-3">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4">
             {posts.map((post, i) => <PostBox post={post} key={post.sections[0].body + post.sections[0].title + i} />)}
         </div>
     )

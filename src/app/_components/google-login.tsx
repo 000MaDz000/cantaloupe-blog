@@ -24,7 +24,9 @@ export default function GoogleLoginButton({ children, disabled }: { children?: R
                 if (response.headers["x-redirect"]) {
                     router.replace(response.headers["x-redirect"]);
                 }
-
+                else {
+                    router.refresh();
+                }
                 return response.status;
             })
             // if there is error in the request, popup an error
