@@ -9,6 +9,7 @@
     },
     "Index": {
         "login": "Login To Your Account",
+        "logout": "Logout",
         "errors": {
             "login fails": "Sorry, there is unknown error"
         },
@@ -68,13 +69,15 @@
                 "add section": "Add A New Section",
                 "post classification": "Post Classification",
                 "errors": {
-                    "title required": "the post title is required",
+                    "title required": "The post title is required",
                     "classification required": "The Classification Is Required"
                 },
                 "upload image": "Upload Image",
                 "file not allowed": "File Not Allowed",
-                "replace image": "replace this image",
-                "created": "Post Created"
+                "replace image": "Replace this image",
+                "created": "Post Created",
+                "post deleted": "Post Deleted",
+                "post delete err": "An unknown error occurred while deleting the post"
             }
         },
         "users": {

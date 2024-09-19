@@ -5,6 +5,7 @@ import session from "@/functions/session";
 import SearchBar from "./search-bar";
 import AppLogo from "./app-logo";
 import OAuthProvider from "./google-oauth-provider";
+import LogoutButton from "./logout-button";
 
 export default async function Header() {
     const sess = await session();
@@ -19,7 +20,7 @@ export default async function Header() {
 
                 {
                     sess.data.user ? (
-                        <></>
+                        <LogoutButton />
                     ) : (
                         <OAuthProvider>
                             <GoogleLoginButton />

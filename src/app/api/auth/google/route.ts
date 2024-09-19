@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import UserHandler from "../../../_classes/user";
 import axios from "axios";
+import session from "@/functions/session";
 
 export type ResponseData = {
     name: string;
@@ -34,4 +35,12 @@ export async function POST(req: Request) {
     }
 
     return res;
+}
+
+export async function PATCH() {
+    const sess = await session();
+    sess.data.user = undefined;
+    await sess.save();
+    const response = new NextResponse("", { status: 200 });
+    return response;
 }

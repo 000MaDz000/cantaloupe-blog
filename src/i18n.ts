@@ -9,7 +9,7 @@ export default getRequestConfig(async () => {
     let locale = (header.get("accept-language")?.slice(0, 2)) || "en";
     if (!acceptedLocales.has(locale)) locale = "en";
 
-    if (process.env.NODE_ENV === "development") locale = "en";
+    if (process.env.NODE_ENV === "development") locale = "ar";
 
     return {
         locale,

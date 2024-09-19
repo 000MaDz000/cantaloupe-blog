@@ -1,1 +1,91 @@
-{}
+{
+    "app logo": "شمام",
+    "get notifications": "إخطارك بالمشاركات الجديدة",
+    "login now": "تسجيل الدخول الآن",
+    "Terms": {
+        "privacy": "سياسة الخصوصية",
+        "use": "شروط الاستخدام",
+        "copyright": "حقوق الطبع والنشر"
+    },
+    "Index": {
+        "login": "تسجيل الدخول إلى حسابك",
+        "logout": "تسجيل الخروج",
+        "errors": {
+            "login fails": "عذرًا، هناك خطأ غير معروف"
+        },
+        "header": {
+            "search placeholder": "ابحث هنا"
+        },
+        "no posts": "لا توجد مشاركات!"
+    },
+    "contacts": {
+        "follow": "تابع {appname}"
+    },
+    "Dashboard": {
+        "links": {
+            "home": "الرئيسية",
+            "posts": "المشاركات",
+            "users": "المستخدمين"
+        },
+        "tables": {
+            "posts": {
+                "table title": "المشاركات",
+                "draft posts title": "المشاركات المبدئية",
+                "classification": "التصنيف",
+                "title": "العنوان",
+                "sections count": "الأقسام",
+                "no data": "لا توجد مشاركات!",
+                "no draft data": "لا توجد مشاركات مبدئية"
+            }
+        },
+        "charts": {
+            "visits": {
+                "title": "الزيارات في {in}",
+                "summary": "الملخص"
+            }
+        },
+        "months": {
+            "1": "يناير",
+            "2": "فبراير",
+            "3": "مارس",
+            "4": "أبريل",
+            "5": "مايو",
+            "6": "يونيو",
+            "7": "يوليو",
+            "8": "أغسطس",
+            "9": "سبتمبر",
+            "10": "أكتوبر",
+            "11": "نوفمبر",
+            "12": "ديسمبر"
+        },
+        "creations": {
+            "post": {
+                "page title": "إنشاء مشاركة جديدة",
+                "create section title": "إنشاء قسم جديد",
+                "section title placeholder": "عنوان القسم",
+                "section body placeholder": "محتوى القسم (اختياري)",
+                "save section": "حفظ قسم المشاركة",
+                "save post": "حفظ المشاركة",
+                "add section": "إضافة قسم جديد",
+                "post classification": "تصنيف المشاركة",
+                "errors": {
+                    "title required": "عنوان المشاركة مطلوب",
+                    "classification required": "التصنيف مطلوب"
+                },
+                "upload image": "رفع صورة",
+                "file not allowed": "الملف غير مسموح",
+                "replace image": "استبدال هذه الصورة",
+                "created": "تم إنشاء المشاركة",
+                "post deleted": "تم حذف المنشور",
+                "post delete err": "حدث خطأ غير معروف اثناء حذف المنشور"
+            }
+        },
+        "users": {
+            "name": "الاسم",
+            "email": "البريد الإلكتروني",
+            "role": "الدور",
+            "admin": "مشرف",
+            "user": "مستخدم"
+        }
+    }
+}
